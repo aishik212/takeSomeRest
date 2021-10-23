@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Take Some Rest</string>
+    <string name="initMessage">Hello!\nLets Take Some Rest Between Work</string>
+</resources>
