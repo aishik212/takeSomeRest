@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryLighterColor">
+    android:background="@color/primaryLighterColor"
+    android:keepScreenOn="true">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/animation_view2"
@@ -51,7 +52,31 @@
             android:text="TextView"
             android:visibility="invisible" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/mute_animation_view"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:lottie_autoPlay="false"
+                app:lottie_loop="false"
+                app:lottie_progress="0.5"
+                app:lottie_rawRes="@raw/volume_on_off"
+                app:lottie_speed="2" />
+
+        </LinearLayout>
+
         <soup.neumorphism.NeumorphCardView
+            android:id="@+id/takeBreakTop"
             style="@style/Widget.Neumorph.CardView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -76,6 +101,146 @@
                 android:text="End Session"
                 android:textColor="@color/primaryTextColor" />
         </soup.neumorphism.NeumorphCardView>
-
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/work_done_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#22000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/animation_view2"
+        app:layout_constraintStart_toStartOf="@+id/animation_view2"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/card_bg_finshed"
+            app:cardCornerRadius="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/work_done_animation_view"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="false"
+                    app:lottie_rawRes="@raw/work_done" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/encodesanssemiexpandedlight"
+                    android:gravity="center"
+                    android:padding="15dp"
+                    android:text="Session Finished!!!\nIf you are Done Working Lets Take a Break else Restart the Timer to finish the Work"
+                    android:textColor="@color/primaryColor"
+                    android:textSize="16sp"
+                    app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/work_done_animation_view" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/textView4"
+                    app:layout_constraintStart_toStartOf="parent">
+
+                    <soup.neumorphism.NeumorphCardView
+                        style="@style/Widget.Neumorph.CardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:neumorph_backgroundColor="@color/primaryLighterColor"
+                        app:neumorph_shapeType="flat">
+
+                        <TextView
+                            android:id="@+id/restart_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/varela_round"
+                            android:gravity="center"
+                            android:lines="1"
+                            android:padding="5dp"
+                            android:shadowColor="#2F000000"
+                            android:shadowDx="6"
+                            android:shadowDy="6"
+                            android:shadowRadius="7"
+                            android:text="Restart"
+                            android:textColor="@color/primaryTextColor" />
+                    </soup.neumorphism.NeumorphCardView>
+
+                    <soup.neumorphism.NeumorphCardView
+                        style="@style/Widget.Neumorph.CardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:neumorph_backgroundColor="@color/primaryLighterColor"
+                        app:neumorph_shapeType="flat">
+
+                        <TextView
+                            android:id="@+id/rest_btn"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/varela_round"
+                            android:gravity="center"
+                            android:lines="1"
+                            android:padding="5dp"
+                            android:shadowColor="#2F000000"
+                            android:shadowDx="6"
+                            android:shadowDy="6"
+                            android:shadowRadius="7"
+                            android:text="Take Some Rest"
+                            android:textColor="@color/primaryTextColor" />
+                    </soup.neumorphism.NeumorphCardView>
+
+                    <soup.neumorphism.NeumorphCardView
+                        style="@style/Widget.Neumorph.CardView"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        app:neumorph_backgroundColor="@color/primaryLighterColor"
+                        app:neumorph_shapeType="flat">
+
+                        <TextView
+                            android:id="@+id/work_done_today"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:fontFamily="@font/varela_round"
+                            android:gravity="center"
+                            android:lines="1"
+                            android:padding="5dp"
+                            android:shadowColor="#2F000000"
+                            android:shadowDx="6"
+                            android:shadowDy="6"
+                            android:shadowRadius="7"
+                            android:text="Work Done For Today"
+                            android:textColor="@color/primaryTextColor" />
+                    </soup.neumorphism.NeumorphCardView>
+
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

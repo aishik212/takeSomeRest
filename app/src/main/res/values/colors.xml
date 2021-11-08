@@ -9,6 +9,7 @@
         <color name="secondaryTextColor">#FFFFFFFF</color>-->
 
     <color name="primaryLighterColor">#EEF8F7</color>
+    <color name="primaryLighterColorTransparent">#33EEF8F7</color>
     <color name="primaryLightColor">#9feaed</color>
     <color name="primaryColor">#6db8bb</color>
     <color name="primaryDarkColor">#3b888b</color>

@@ -19,12 +19,13 @@
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="20dp"
+            android:layout_margin="15dp"
             android:layout_weight="1"
             android:autoSizeMaxTextSize="30sp"
             android:autoSizeTextType="uniform"
+            android:autoSizeMinTextSize="10sp"
             android:fontFamily="@font/encodesanssemiexpandedlight"
-            android:paddingEnd="100dp"
+            android:paddingEnd="50dp"
             android:text="Before You Take Some rest We need to do some work of course, So click on the start button below to start doing work. The default Work time is 20 Minutes if you want to increase or decrease it feel free to change it according to your Need"
             android:textColor="@color/primaryTextColor"
             android:textStyle="bold" />
@@ -32,13 +33,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_margin="10dp"
             android:orientation="horizontal">
 
             <soup.neumorphism.NeumorphCardView
                 style="@style/Widget.Neumorph.CardView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:neumorph_backgroundColor="@color/primaryLighterColor"
                 app:neumorph_shapeAppearance="@style/CustomShapeAppearance">
@@ -50,30 +51,25 @@
                     android:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
+                    android:minHeight="50dp"
                     android:text="+"
                     android:textColor="@color/primaryTextColor" />
             </soup.neumorphism.NeumorphCardView>
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            <TextView
+                android:id="@+id/time_tv"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/time_tv"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:editable="false"
-                    android:gravity="center"
-                    android:text="20 Mins"
-                    android:textColor="@color/primaryTextColor" />
-            </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:editable="false"
+                android:gravity="center"
+                android:text="20 Mins"
+                android:textColor="@color/primaryTextColor" />
 
             <soup.neumorphism.NeumorphCardView
                 style="@style/Widget.Neumorph.CardView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:neumorph_backgroundColor="@color/primaryLighterColor"
                 app:neumorph_shapeAppearance="@style/CustomShapeAppearance">
@@ -85,6 +81,7 @@
                     android:autoSizeTextType="uniform"
                     android:clickable="false"
                     android:gravity="center"
+                    android:minHeight="50dp"
                     android:text="-"
                     android:textColor="@color/primaryTextColor" />
             </soup.neumorphism.NeumorphCardView>
@@ -97,6 +94,7 @@
             android:layout_weight="1"
             android:scaleType="centerCrop"
             app:lottie_autoPlay="true"
+            android:layout_margin="15dp"
             app:lottie_loop="true"
             app:lottie_rawRes="@raw/working"
             tools:background="@color/primaryTextColor" />
@@ -105,17 +103,17 @@
             style="@style/Widget.Neumorph.CardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="15dp"
             app:neumorph_backgroundColor="@color/primaryLighterColor"
             app:neumorph_shapeAppearance="@style/CustomShapeAppearance"
             app:neumorph_shapeType="flat">
 
             <Button
                 android:id="@+id/start_working_btn"
-                style="@style/Widget.AppCompat.Button.Borderless"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
-                android:autoText="false"
                 android:gravity="center"
                 android:text="Start Working"
                 android:textColor="@android:color/black" />
@@ -126,7 +124,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="15dp"
         android:fontFamily="@font/amethysta"
         android:text="Lets Do Some Work First"
         android:textColor="@android:color/black"

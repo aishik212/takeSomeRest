@@ -23,10 +23,14 @@ class HomeActivity : AppCompatActivity() {
             time -= 10
             setTime()
         }
-        inflate.startWorkingBtn.setOnClickListener {
+        val startWorkingBtn = inflate.startWorkingBtn
+        startWorkingBtn.setOnClickListener {
             val intent = Intent(this, startWorking::class.java)
             intent.putExtra("time", time)
             MainActivity.startAct(this, intent)
+        }
+        if (BuildConfig.DEBUG) {
+            startWorkingBtn.performClick()
         }
     }
 
