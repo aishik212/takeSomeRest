@@ -6,6 +6,7 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import com.simpleapps.takesomerest.databinding.RestingLayoutBinding
+import org.json.JSONObject
 import java.util.*
 
 class Resting : Activity() {
@@ -14,8 +15,8 @@ class Resting : Activity() {
         super.onCreate(savedInstanceState)
         val binding = RestingLayoutBinding.inflate(layoutInflater)
         val root = binding.root
+        val startTime = System.currentTimeMillis()
         setContentView(root)
-        Log.d("texts", "onCreate: " + getTime())
         if (getTime() == "N") {
             mPlayer2 = MediaPlayer.create(this, R.raw.night_sound)
         } else {
@@ -31,6 +32,17 @@ class Resting : Activity() {
             mPlayer2?.stop()
             mPlayer2?.release()
             mPlayer2 = null
+            val json = JSONObject()
+            json.put("time", System.currentTimeMillis())
+            json.put("name", null)
+            json.put("totalTime", System.currentTimeMillis() - startTime)
+            json.put("type", "REST")
+            json.put("restarting", false)
+            SharedPrefUtils.saveData(
+                applicationContext,
+                "Session_" + System.currentTimeMillis(),
+                json.toString()
+            )
             finish()
         }
         binding.startWorkingBtn.setOnClickListener {
@@ -38,6 +50,17 @@ class Resting : Activity() {
             mPlayer2?.release()
             mPlayer2 = null
             finish()
+            val json = JSONObject()
+            json.put("time", System.currentTimeMillis())
+            json.put("name", null)
+            json.put("totalTime", System.currentTimeMillis() - startTime)
+            json.put("type", "REST")
+            json.put("restarting", true)
+            SharedPrefUtils.saveData(
+                applicationContext,
+                "Session_" + System.currentTimeMillis(),
+                json.toString()
+            )
             val receivedTime = intent.extras?.get("time")
             val i = Intent(this, startWorking::class.java)
             i.putExtra("time", "$receivedTime")

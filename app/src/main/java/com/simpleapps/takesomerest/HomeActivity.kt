@@ -29,9 +29,9 @@ class HomeActivity : AppCompatActivity() {
             intent.putExtra("time", time)
             MainActivity.startAct(this, intent)
         }
-        if (BuildConfig.DEBUG) {
+        /*if (BuildConfig.DEBUG) {
             startWorkingBtn.performClick()
-        }
+        }*/
     }
 
     private fun setTime() {

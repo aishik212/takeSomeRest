@@ -51,10 +51,19 @@ class TimerService : Service() {
     }
 
     fun showNotif(context: Context, textTitle: String, textContent: String) {
-        val contentIntent = PendingIntent.getActivity(
-            this,
-            0, Intent(this, startWorking::class.java), PendingIntent.FLAG_ONE_SHOT
-        )
+        val contentIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            PendingIntent.getActivity(
+                this,
+                0,
+                Intent(this, startWorking::class.java),
+                PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
+            )
+        } else {
+            PendingIntent.getActivity(
+                this,
+                0, Intent(this, startWorking::class.java), PendingIntent.FLAG_ONE_SHOT
+            )
+        }
         val builder = NotificationCompat.Builder(context.applicationContext, TIMER_CHANNEL)
             .setSmallIcon(R.drawable.ic_launcher_foreground)
             .setContentTitle(textTitle)
@@ -78,10 +87,19 @@ class TimerService : Service() {
         const val TIMER_CHANNEL_ID = 1
 
         fun showNotif(context: Context, textTitle: String, textContent: String) {
-            val contentIntent = PendingIntent.getActivity(
-                context,
-                0, Intent(context, startWorking::class.java), PendingIntent.FLAG_ONE_SHOT
-            )
+            val contentIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                PendingIntent.getActivity(
+                    context,
+                    0,
+                    Intent(context, startWorking::class.java),
+                    PendingIntent.FLAG_ONE_SHOT or PendingIntent.FLAG_IMMUTABLE
+                )
+            } else {
+                PendingIntent.getActivity(
+                    context,
+                    0, Intent(context, startWorking::class.java), PendingIntent.FLAG_ONE_SHOT
+                )
+            }
             val builder = NotificationCompat.Builder(context.applicationContext, TIMER_CHANNEL)
                 .setSmallIcon(R.drawable.ic_launcher_foreground)
                 .setContentTitle(textTitle)

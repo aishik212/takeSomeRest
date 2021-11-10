@@ -35,8 +35,9 @@ class startWorking : Activity() {
         }
         time = Integer.parseInt("${receivedTime ?: 30}")
         var l = time * 60 * 1000L
-        Log.d("texts", "onCreate: ...." + Integer.parseInt(split[1]) * 60)
         if (split.size > 1) {
+            Log.d("texts", "onCreate: ...." + split + " " + split[1])
+            Log.d("texts", "onCreate: ...." + Integer.parseInt(split[1]) * 60)
             l += Integer.parseInt(split[1]) * 1000
         }
         Log.d("texts", "FINAL TIME: -> $l")
@@ -78,9 +79,9 @@ class startWorking : Activity() {
                 startWorkingLayoutBinding.workDoneView.visibility = VISIBLE
                 startWorkingLayoutBinding.takeBreakTop.visibility = GONE
                 startWorkingLayoutBinding.workDoneAnimationView.playAnimation()
-                if (BuildConfig.DEBUG) {
+                /*if (BuildConfig.DEBUG) {
                     startWorkingLayoutBinding.restBtn.performClick()
-                }
+                }*/
                 Log.d("texts", "onFinish: ")
             }
         }
@@ -92,6 +93,7 @@ class startWorking : Activity() {
             json.put("completed", false)
             json.put("name", null)
             json.put("totalTime", receivedTime)
+            json.put("type", "WORK")
             json.put("timeLeft", minute * 60 + seconds)
             json.put("restarting", false)
             SharedPrefUtils.saveData(
@@ -114,6 +116,7 @@ class startWorking : Activity() {
             json.put("time", System.currentTimeMillis())
             json.put("completed", false)
             json.put("name", null)
+            json.put("type", "WORK")
             json.put("totalTime", receivedTime)
             json.put("timeLeft", minute * 60 + seconds)
             json.put("restarting", true)
@@ -132,6 +135,7 @@ class startWorking : Activity() {
             json.put("time", System.currentTimeMillis())
             json.put("completed", false)
             json.put("name", null)
+            json.put("type", "WORK")
             json.put("totalTime", receivedTime)
             json.put("timeLeft", minute * 60 + seconds)
             json.put("restarting", false)
@@ -150,6 +154,7 @@ class startWorking : Activity() {
             json.put("time", System.currentTimeMillis())
             json.put("completed", true)
             json.put("name", null)
+            json.put("type", "WORK")
             json.put("totalTime", receivedTime)
             json.put("timeLeft", minute * 60 + seconds)
             json.put("restarting", false)
@@ -159,9 +164,6 @@ class startWorking : Activity() {
                 json.toString()
             )
             finish()
-            val i = Intent(this, startWorking::class.java)
-            i.putExtra("time", "$receivedTime")
-            MainActivity.startAct(this, i)
         }
 //        stopService(intent)
     }
